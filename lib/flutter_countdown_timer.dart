@@ -98,18 +98,17 @@ class _CountDownState extends State<CountdownTimer> {
 
     String value = '';
     if (time.days != null) {
-      value = '$value${_padZero(time.days)} days ';
+      value = '$value${_format(time.days)} days ';
     }
 
     return Text(
-      '$value${_padZero(time.hours)} : ${_padZero(time.min)} : ${_padZero(time.sec)}',
+      '$value${_format(time.hours)} : ${_format(time.min)} : ${_format(time.sec)}',
       style: textStyle,
     );
   }
 
-  String _padZero(int? number) => (number ?? 0).toString().padLeft(2, '0');
-
-  String format(int num) {
+  String _format(int? num) {
+    if (num == null) return "00";
     if (num < 10) {
       return '0$num';
     }
