@@ -98,7 +98,7 @@ class _CountDownState extends State<CountdownTimer> {
 
     String value = '';
     if (time.days != null) {
-      value = '$value${time.days} days ';
+      value = '$value${_padZero(time.days)} days ';
     }
 
     return Text(
@@ -108,4 +108,11 @@ class _CountDownState extends State<CountdownTimer> {
   }
 
   String _padZero(int? number) => (number ?? 0).toString().padLeft(2, '0');
+
+  String format(int num) {
+    if (num < 10) {
+      return '0$num';
+    }
+    return num.toString();
+  }
 }
